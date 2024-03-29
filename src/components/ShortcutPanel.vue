@@ -1,49 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useSortable } from '@/composables/useSortable'
+import { useSortableShortcuts } from '@/composables/useSortableShortcuts'
+import { useShortcutStore } from '@/stores/ShortcutStore'
 
-type Shortcut = {
-  id: string
-  name: string
-  link: string
-}
-
-const shortcuts = ref<Shortcut[]>([
-  { id: '0', name: 'Discord', link: '#' },
-  { id: '1', name: 'Facebook', link: '#' },
-  { id: '2', name: 'Twitter', link: '#' },
-  { id: '3', name: 'Youtube', link: '#' },
-  { id: '4', name: 'Google', link: '#' },
-  { id: '5', name: 'Gmail', link: '#' },
-  { id: '6', name: 'VSCode', link: '#' },
-  { id: '7', name: 'Spotify', link: '#' },
-  { id: '8', name: 'Steam', link: '#' },
-  { id: '9', name: 'Terminal', link: '#' },
-  { id: '10', name: 'Folder', link: '#' },
-  { id: '11', name: 'Chrome', link: '#' },
-  { id: '12', name: 'Notes', link: '#' },
-  { id: '13', name: 'Bookmarks', link: '#' },
-  { id: '0', name: 'Discord', link: '#' },
-  { id: '1', name: 'Facebook', link: '#' },
-  { id: '2', name: 'Twitter', link: '#' },
-  { id: '3', name: 'Youtube', link: '#' },
-  { id: '4', name: 'Google', link: '#' },
-  { id: '5', name: 'Gmail', link: '#' },
-  { id: '6', name: 'VSCode', link: '#' },
-  { id: '7', name: 'Spotify', link: '#' },
-  { id: '8', name: 'Steam', link: '#' },
-  { id: '9', name: 'Terminal', link: '#' },
-  { id: '10', name: 'Folder', link: '#' },
-  { id: '11', name: 'Chrome', link: '#' },
-  { id: '12', name: 'Notes', link: '#' },
-  { id: '13', name: 'Bookmarks', link: '#' }
-])
-
+const shortcutStore = useShortcutStore()
 const sortableElement = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   if (sortableElement.value) {
-    useSortable(sortableElement.value)
+    useSortableShortcuts(sortableElement.value, 'order')
   }
 })
 </script>
@@ -55,8 +20,9 @@ onMounted(() => {
       ref="sortableElement"
     >
       <li
-        v-for="shortcut in shortcuts"
+        v-for="shortcut in shortcutStore.list"
         :key="shortcut.id"
+        :order="shortcut.id"
         class="flex justify-center items-center py-3"
       >
         <a :href="shortcut.link" class="text-xl">{{ shortcut.name }}</a>
