@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useSortable } from '@/composables/useSortable'
 
 type Shortcut = {
   id: string
@@ -37,12 +38,21 @@ const shortcuts = ref<Shortcut[]>([
   { id: '12', name: 'Notes', link: '#' },
   { id: '13', name: 'Bookmarks', link: '#' }
 ])
+
+const sortableElement = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+  if (sortableElement.value) {
+    useSortable(sortableElement.value)
+  }
+})
 </script>
 
 <template>
   <section class="overflow-y-auto border-2 rounded-lg scrollbar">
     <ul
       class="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 grid-rows-4 grid-flow-row auto-rows-fr gap-y-4"
+      ref="sortableElement"
     >
       <li
         v-for="shortcut in shortcuts"
