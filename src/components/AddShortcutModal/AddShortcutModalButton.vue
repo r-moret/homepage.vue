@@ -10,7 +10,7 @@ const openModal = () => emit('open-modal')
 
 <template>
   <button
-    class="group mx-auto mb-5 mt-auto w-fit overflow-hidden rounded-md border-2 border-gray-700 bg-gray-950 px-3.5 py-0.5 text-center text-lg font-semibold text-gray-300 shadow-md"
+    class="border-base-800 bg-base-900 text-base-200 group mx-auto mb-10 mt-auto w-fit overflow-hidden rounded-md border-2 px-3.5 py-0.5 text-center text-lg font-semibold"
     @click="openModal"
   >
     <div class="relative flex items-center transition-all duration-300 group-hover:mr-[7.5rem]">

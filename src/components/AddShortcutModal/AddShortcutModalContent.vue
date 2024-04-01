@@ -56,47 +56,44 @@ const saveShortcut = () => {
 
 <template>
   <div v-if="isOpen" class="flex flex-col items-center">
-    <aside class="p-3 rounded-lg w-[32rem] h-96 bg-gray-900 z-50 fixed top-1/4 flex flex-col">
+    <aside class="bg-base-900 fixed top-1/4 z-50 flex h-96 w-[32rem] flex-col rounded-lg p-3">
       <div class="flex justify-end">
-        <button
-          class="rounded-lg w-fit bg-gray-950 text-gray-300 hover:text-white"
-          @click="closeModal"
-        >
-          <Xmark class="w-8 h-8" />
+        <button class="bg-base-800 text-base-200 w-fit rounded-lg" @click="closeModal">
+          <Xmark class="h-8 w-8" />
         </button>
       </div>
 
       <header class="px-6">
-        <h2 class="text-3xl font-semibold text-gray-300">Add new shortcut</h2>
+        <h2 class="text-base-200 text-3xl font-semibold">Add new shortcut</h2>
       </header>
 
-      <form @submit.prevent="saveShortcut" class="mt-8 flex flex-col h-full gap-8">
-        <div class="flex flex-col gap-6 items-center">
-          <div class="flex flex-col gap-1 w-3/4">
-            <label for="shortcut-name" class="text-gray-300 ml-1">Name</label>
+      <form @submit.prevent="saveShortcut" class="mt-8 flex h-full flex-col gap-8">
+        <div class="flex flex-col items-center gap-6">
+          <div class="flex w-3/4 flex-col gap-1">
+            <label for="shortcut-name" class="text-base-200 ml-1">Name</label>
             <input
               type="text"
               name="shortcut-name"
               id="shortcut-name"
               v-model="newShortcut.name"
-              :class="`h-9 px-2 bg-gray-950 text-white rounded-lg focus:outline-none focus:ring focus:ring-gray-700 ring-gray-800 ring-2 ${isValid.name ? '' : 'border-2 border-red-600'}`"
+              :class="`bg-base-950 text-base-200 ring-base-900 focus:ring-base-800 h-9 rounded-lg px-2 ring-2 focus:outline-none focus:ring ${isValid.name ? '' : 'border-2 border-red-600'}`"
             />
           </div>
 
-          <div class="flex flex-col gap-1 w-3/4">
-            <label for="shortcut-link" class="text-gray-300 ml-1">Link</label>
+          <div class="flex w-3/4 flex-col gap-1">
+            <label for="shortcut-link" class="text-base-200 ml-1">Link</label>
             <input
               type="text"
               name="shortcut-link"
               id="shortcut-link"
               v-model="newShortcut.link"
-              :class="`h-9 px-2 bg-gray-950 text-white rounded-lg focus:outline-none focus:ring focus:ring-gray-700 ring-gray-800 ring-2 ${isValid.link ? '' : 'border-2 border-red-600'}`"
+              :class="`bg-base-950 text-base-200 ring-base-900 focus:ring-base-800 h-9 rounded-lg px-2 ring-2 focus:outline-none focus:ring ${isValid.link ? '' : 'border-2 border-red-600'}`"
             />
           </div>
         </div>
 
         <button
-          class="rounded-lg w-fit px-9 py-1.5 mx-auto mt-auto mb-4 bg-gray-950 text-gray-300 hover:text-white"
+          class="bg-base-800 border-base-700 text-base-200 mx-auto mb-4 mt-auto w-fit rounded-lg border-2 px-8 py-1 text-lg"
         >
           Save
         </button>
@@ -104,7 +101,7 @@ const saveShortcut = () => {
     </aside>
 
     <div
-      class="w-screen h-screen fixed z-10 top-0 left-0 right-0 bottom-0 bg-opacity-50 bg-black filter backdrop-blur-sm"
+      class="fixed bottom-0 left-0 right-0 top-0 z-10 h-screen w-screen bg-black bg-opacity-50 filter backdrop-blur-sm"
       @click="closeModal"
     ></div>
   </div>

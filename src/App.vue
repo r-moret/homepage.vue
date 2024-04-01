@@ -5,11 +5,9 @@ import AddShortcutModal from './components/AddShortcutModal/AddShortcutModal.vue
 </script>
 
 <template>
-  <main class="bg-gray-900 flex flex-col h-screen">
-    <GreetingHeader class="bg-gray-950 text-gray-300 flex-initial" />
-    <ShortcutPanel
-      class="bg-gray-950 text-gray-300 border-gray-800 mt-36 mx-auto w-4/5 lg:w-3/4 xl:w-3/5 2xl:w-2/4 h-96"
-    />
+  <main class="from-base-950 to-base-950 flex h-screen flex-col bg-gradient-to-t via-stone-800">
+    <GreetingHeader class="flex-initial" />
+    <ShortcutPanel class="text-base-300 mt-32 h-96 w-full rounded-md border-0 px-80" />
     <AddShortcutModal />
   </main>
 </template>
